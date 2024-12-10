@@ -1,3 +1,5 @@
+// claude slop, just for prototyping on tutorial and manual. do not use for anything else.
+
 // Token management
 const getToken = () => localStorage.getItem('tacticsToken') ;
 const setToken = (token) => localStorage.setItem('tacticsToken' , token) ;
@@ -6,8 +8,8 @@ const clearToken = () => localStorage.removeItem('tacticsToken') ;
 // Check URL for token on load
 const checkUrlForToken = () => {
   const hash = window.location.hash ;
-  if (hash.startsWith('#token=')) {
-    const token = hash.replace('#token=' , '') ;
+  if (hash.startsWith('#=')) {
+    const token = hash.replace('#=' , '') ;
     setToken(token) ;
     // Clean URL
     window.location.hash = '' ;
