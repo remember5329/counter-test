@@ -1,6 +1,7 @@
 // Token management
 const getToken = () => localStorage.getItem('tacticsToken') ;
 const setToken = (token) => localStorage.setItem('tacticsToken' , token) ;
+const clearToken = () => localStorage.removeItem('tacticsToken') ;
 
 // Check URL for token on load
 const checkUrlForToken = () => {
@@ -11,6 +12,10 @@ const checkUrlForToken = () => {
     // Clean URL
     window.location.hash = '' ;
     showCounter() ;
+  } else {
+    // Clear token if no token in URL
+    clearToken() ;
+    showLogin() ;
   }
 } ;
 
@@ -112,11 +117,4 @@ const fetchCounter = async () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   checkUrlForToken() ;
-  
-  const token = getToken() ;
-  if (token) {
-    showCounter() ;
-  } else {
-    showLogin() ;
-  }
 }) ;
